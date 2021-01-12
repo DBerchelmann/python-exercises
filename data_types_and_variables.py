@@ -64,11 +64,7 @@ password = 'notastrongpassword'
 # the password must not be the same as the username
 # bonus neither the username or password can start or end with whitespace
 
-if len(password) >= 5 and 
-   len(password) <= 20 and 
-   password != username and 
-   password == password.strip() and 
-   username == username.strip():
+if len(password) >= 5 and len(password) <= 20 and password != username and password == password.strip() and username == username.strip():
     print(password)
 else:
     print('fix your password and submit again')
