@@ -18,17 +18,23 @@ print(f'$ {total_cost}')
 # Google pays 400 dollars per hour, Amazon 380, and Facebook 350. How much will you receive in payment for this week? 
 # You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
 
-#if key is amazon, dicitonary.values * 380
+
 
 hours_at_google = 6
 hours_at_amazon = 4
 hours_at_facebook = 10
 
-google_pay = hours_at_google * 400
-amazon_pay = hours_at_amazon * 380
-facebook_pay = hours_at_facebook * 350
+google_rate = 400
+amazon_rate = 380
+facebook_rate = 350
 
-print(f'$ {google_pay}')
+google_pay = hours_at_google * google_rate
+amazon_pay = hours_at_amazon * amazon_rate
+facebook_pay = hours_at_facebook * facebook_rate
+
+total_pay = google_pay + amazon_pay + facebook_pay
+
+print(f'$ {total_pay} is the total compensation for work done.')
 
 
 
@@ -64,9 +70,27 @@ password = 'notastrongpassword'
 # the password must not be the same as the username
 # bonus neither the username or password can start or end with whitespace
 
-if len(password) >= 5 and len(password) <= 20 and password != username and password == password.strip() and username == username.strip():
+if len(password) >= 5 and len(username) <= 20 and password != username and password == password.strip() and username == username.strip():
     print(password)
+    
 else:
     print('fix your password and submit again')
+
+### better way to solve it is below
+
+password_is_at_least_5_characters = len(password) >= 5
+username_less_than_twenty_characters = len(username) <= 20
+password_different_than_username = username != password
+password_has_no_beginning_or_ending_whitespace = password == password.strip()
+username_has_no_beginning_or_ending_whitespace = password == username.strip()
+
+good_username_and_password = (password_is_at_least_5_characters 
+                            and username_less_than_twenty_characters 
+                            and password_different_than_username 
+                            and password_has_no_beginning_or_ending_whitespace 
+                            and username_has_no_beginning_or_ending_whitespace 
+                            )
+
+print(good_username_and_password)
 
 
