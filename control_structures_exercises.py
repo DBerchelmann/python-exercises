@@ -4,6 +4,8 @@
 
 user_day = input('What day of the week is it? ')
 
+# could use if user_day.starswith("Mon"):
+
 if user_day == 'monday':
     print('Great, today is monday.')
 else:
@@ -13,6 +15,8 @@ else:
 
 user_day = input('What day of the week is it? ')
 
+# if user_day == "Saturday" or user_day == "sunday": print(f"{user_day} is a weekend day!") else: print(f"{user_day} is not a weekend.)
+# if user_day.lower().startswith('s'): is another way to write the conditional.
 
 if user_day == 'monday':
     print('This is a weekday')
@@ -75,15 +79,15 @@ while i >= -10:
 # Create a while loop that starts at 2, and displays the number squared on each line while the number is less than 1,000,000. Output should equal:
 
 i = 2
-while i < 1_000_000:
+while i <= 1_000_000:
     print(i)
-    i = i ** 2
+    i = i ** 2 # could also do i *= i which is short-hand for  i = i * i
 
 # Write a loop that uses print to create the output shown below.
 
 i = 100
 while i >= 5:
-    print(i)
+    print(i) # print(f"i: {i}") is another way we could display it
     i -= 5
 
 
@@ -91,46 +95,86 @@ while i >= 5:
 
 # Write some code that prompts the user for a number, then shows a multiplication table up through 10 for that number.
 
-user_number = int(input('please enter your favorite number? '))
+user_number = int(input('please enter your favorite number. '))
 
 
 
 for n in range(1, 11):
     print(n, "x", user_number, "=", user_number*n)
 
+#^^^another way to do this:  print(f"{user_numer} x {n} = { user_number * n}")
+
 # Create a for loop that uses print to create the output shown below.
 
 for n in range(10):
     print(str((n))*n)
 
+# print(str(n) * n)
+# -------------
 # break and continue
 
-# Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input. 
+# 2) Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input. 
 # (Hint: use the isdigit method on strings to determine this).
  # Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
 
 # odd_input = input('please enter an odd number between 1 and 50. ')
-
-# while number in odd_input:
- #    print('this is an invalid input')
-#    if int(number) % 2 == 0 or (int(number) > 50 or int(number) < 1):
- #       break
-
-
-
-
-# Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
-
-other_odd_input = int(input('please enter an odd number between 1 and 50. '))
-
-for n in range(0, 51):
-    if n != other_odd_input and n % 2 == 0:
+#TODO: validate input is right below. when you see "while True", the intent is to create an infinite loop
+# it will continuously execute until the user puts in a "true" number
+while True:
+    user_number = input("please enter an odd number between 1 and 50: ")
+    if user_number.isdigit():
+        user_number = int(user_number)
+        if user_number % 2 == 0: # if it's even
+            continue #skip to next loop iteration and run it again
+        break
+i = 1
+while i <= 50:
+    if i == user_number:
+        print(f" Yikes! SKipping number: {i}")
+        i += 2
         continue
-    print('Here is an odd number: {}'.format(n))
+    print(f'Here is an odd number: {i}')
+    i += 2
+
+# The input function can be used to prompt for input and use that input in your python code.
+#  Prompt the user to enter a positive number and write a loop that counts from 0 to that number.
+#  (Hints: first make sure that the value the user entered is a valid number, 
+# also note that the input function returns a string, so you'll need to convert this to a numeric type.)
+
+while True:
+    user_number = input("please enter a positive number between 1 and 50: ")
+    if user_number.isdigit():
+        user_number = int(user_number)
+        if user_number <= 0: # if it's even
+            continue #skip to next loop iteration
+        break
+#- continuously
+    # prompt the user for a positive number
+    # check if the input is composed of digits, if so
+        # convert to a numeric type
+        # check if the number is negative or 0
+            # if so, go back to square one
+        # stop the loop (break)
+
+for i in range(0, user_number + 1):
+        print(i)
+# Write a program that prompts the user for a positive integer.
+#  Next write a loop that prints out the numbers from the number the user entered down to 1.
+list(range(10, 1, -1)) #prints the run down from 10 to 1
+
+while True:
+    user_number = input("please enter a positive number between 1 and 50: ")
+    if user_number.isdigit():
+        user_number = int(user_number)
+        if user_number <= 0: # if it's even
+            continue #skip to next loop iteration
+        break
+for i in range(user_number, 0 , -1):
+        print(i)
 
 
 
-# One of the most common interview questions for entry-level programmers is the FizzBuzz test. Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
+# 3) One of the most common interview questions for entry-level programmers is the FizzBuzz test. Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
 
 # Write a program that prints the numbers from 1 to 100.
 # For multiples of three print "Fizz" instead of the number
@@ -147,7 +191,7 @@ for n in range(1, 101):
     else:
         print(n)
 
-# Display a table of powers.
+# 4) Display a table of powers.
 
 # Prompt the user to enter an integer.
 # Display a table of squares and cubes from 1 to the value entered.
@@ -155,7 +199,11 @@ for n in range(1, 101):
 # Assume that the user will enter valid data.
 # Only continue if the user agrees to.
 
+
+# my solution below 
 number_chosen = input('what number would you like to see ?  ')
+print("Here is your table!")
+
 
 for n in range(1, (int(number_chosen)+1)):
     print(n, n**2, n**3)
@@ -175,4 +223,90 @@ while play_again == 'Y':
 
 print('Thank you for your time.')
 
+# instructor solution below
 
+user_input = int(input("Plese enter an integer: "))
+print()
+print("number | squared | cubed")
+print("------ | ------- | -----")
+
+for i in range(1, user_input + 1):
+    print("%6d | %7d | %5d" % (i, i**2, i**3))
+
+
+# 5) Convert given number grades into letter grades.
+
+# Prompt the user for a numerical grade from 0 to 100.
+# Display the corresponding letter grade.
+# Prompt the user to continue.
+# Assume that the user will enter valid integers for the grades.
+# The application should only continue if the user agrees to.
+# Grade Ranges:
+
+# A : 100 - 88
+# B : 87 - 80
+# C : 79 - 67
+# D : 66 - 60
+# F : 59 - 0
+
+#instructor solution
+#TODO: prompt user for this value
+while True:
+
+    numeric_grade = int(input("Please enter a number grade: "))
+
+    # convert to letter
+
+    if numeric_grade >= 88:
+        print("A")
+    elif numeric_grade >= 80:
+        print("B")
+    elif numeric_grade >= 67:
+        print("C")
+    elif numeric_grade >= 60:
+        print("D")
+    else:
+        print("F")
+
+    wants_to_continue = input("Do you want to continue? ")
+    if not wants_to_continue.lower().startswith("y"): #could also do, if wants_to_contiue != "yes"
+        break
+
+
+
+
+
+
+#Bonus
+
+# Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
+
+
+# 6 Create a list of dictionaries where each dictionary represents a book that you have read. 
+# Each dictionary in the list should have the keys title, author, and genre. 
+# Loop through the list and print out information about each book.
+
+# Prompt the user to enter a genre, then loop through your books list and print out the titles of all the books in that genre.
+
+# look at instructor notebook for #6 solution
+
+
+ books = [
+    {"title": "my life", "author": "Edgar Adams", "genre": "Romance"}
+    {key: value, key: value, key: value}
+    {key: value, key: value, key: value}
+ ]
+
+selected_genre = input("Please enter a genre")
+selected_books = [book for book in books if book['genre'] == selected_genre]]
+
+
+ # for singluar in plural
+ # plural variable names indicate a list of things
+ # the singular version is one thing from the list
+# book
+ for book in selected_books:
+     print("---")
+     print("title: {}".format(book['title'])) # curly braces denote the emtpy value which will be filled in based on user input. .format adjusts how answer looks
+     print("author: {}".format(book['author']))
+     print("genre: {}".format(book['genre']))
