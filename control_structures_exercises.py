@@ -109,12 +109,15 @@ for n in range(10):
 # (Hint: use the isdigit method on strings to determine this).
  # Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
 
-odd_input = input('please enter an odd number between 1 and 50. ')
+# odd_input = input('please enter an odd number between 1 and 50. ')
 
-while number in odd_input:
-    print('this is an invalid input')
-    if int(number) % 2 == 0 or (int(number) > 50 or int(number) < 1):
-        break
+# while number in odd_input:
+ #    print('this is an invalid input')
+#    if int(number) % 2 == 0 or (int(number) > 50 or int(number) < 1):
+ #       break
+
+
+
 
 # Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
 
@@ -124,4 +127,52 @@ for n in range(0, 51):
     if n != other_odd_input and n % 2 == 0:
         continue
     print('Here is an odd number: {}'.format(n))
+
+
+
+# One of the most common interview questions for entry-level programmers is the FizzBuzz test. Developed by Imran Ghory, the test is designed to test basic looping and conditional logic skills.
+
+# Write a program that prints the numbers from 1 to 100.
+# For multiples of three print "Fizz" instead of the number
+# For the multiples of five print "Buzz".
+# For numbers which are multiples of both three and five print "FizzBuzz".
+
+for n in range(1, 101):
+    if (n % 3 == 0) and (n % 5 == 0):
+        print('FizzBuzz')
+    elif n % 3 == 0:
+        print('Fizz')
+    elif n % 5 == 0:
+        print('Buzz')
+    else:
+        print(n)
+
+# Display a table of powers.
+
+# Prompt the user to enter an integer.
+# Display a table of squares and cubes from 1 to the value entered.
+# Ask if the user wants to continue.
+# Assume that the user will enter valid data.
+# Only continue if the user agrees to.
+
+number_chosen = input('what number would you like to see ?  ')
+
+for n in range(1, (int(number_chosen)+1)):
+    print(n, n**2, n**3)
+
+play_again = input('do you want to continue? type Y or N  ')
+
+play_again = play_again.upper()
+
+while play_again == 'Y':
+
+    number_chosen = input('what number would you like to see ?  ')
+    for n in range(1, (int(number_chosen)+1)):
+        print(n, n**2, n**3)
+    play_again = input('do you want to continue? type Y or N  ')
+
+    play_again = play_again.upper()
+
+print('Thank you for your time.')
+
 
